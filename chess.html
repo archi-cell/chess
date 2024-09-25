@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            white-space: pre; /* Preserve white spaces for proper alignment */
+        }
+        .chessboard-label {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+// User Story 1: Function to print grid elements
+function print(data) {
+    let label = document.createElement('span'); // Create span to hold a symbol
+    label.className = "chessboard-label";
+    label.textContent = data;
+    document.body.appendChild(label); // Append label to body
+}
+
+// User Story 2: Function to create new line (for breaking lines in the grid)
+function newLine() {
+    let br = document.createElement('br'); // Create <br> for line break
+    document.body.appendChild(br); // Append <br> to body
+}
+
+// User Story 3: Declare board size
+let board_size = 8; // Change this value to create different board sizes
+
+// User Story 4: Create the chessboard grid
+function createChessboard(size) {
+    for (let row = 0; row < size; row++) {
+        for (let col = 0; col < size; col++) {
+            // Alternate between " * " and "#"
+            if ((row + col) % 2 === 0) {
+                print(' * ');
+            } else {
+                print(' # ');
+            }
+        }
+        newLine(); // Move to the next line after completing a row
+    }
+}
+
+// Call the function to create the chessboard
+createChessboard(board_size);
+
+</script>
+
+</body>
+</html>
